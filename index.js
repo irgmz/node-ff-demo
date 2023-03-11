@@ -6,7 +6,7 @@ const app = express();
 const port = 3000;
 
 const rollbar = new Rollbar({
-  accessToken: 'fe6f4278ef9e4e04a6de03cca85a89b2',
+  accessToken: 'TOKEN_HERE',
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
   // Create a GrowthBook Context
   req.growthbook = new GrowthBook({
     apiHost: "https://cdn.growthbook.io",
-    clientKey: "sdk-f0iMJiWKlh8vGlTF",
+    clientKey: "sdk-abc123",
     enableDevMode: true,
     trackingCallback: (experiment, result) => {
       // TODO: Use your real analytics tracking system
@@ -39,8 +39,8 @@ app.use(function(req, res, next) {
 })
 
 app.get("/", (req, res) => {
-    if (req.growthbook.isOn("button-counter")) {
-        const flagKey = "button-counter";
+    if (req.growthbook.isOn("my-feature")) {
+        const flagKey = "my-feature";
         const errorMessage = `Uh oh, something broke with feature flag "${flagKey}"!`;
         rollbar.error(errorMessage,{flagKey:flagKey});
 
