@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@growthbook/growthbook": "^0.23.0",
+    "express": "^4.18.2",
+    "rollbar": "^2.26.1"
+  }
+}
